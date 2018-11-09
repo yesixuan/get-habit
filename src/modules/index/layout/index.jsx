@@ -4,8 +4,8 @@ import { withStyles } from '@material-ui/core/styles'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import RestoreIcon from '@material-ui/icons/Restore'
-import FavoriteIcon from '@material-ui/icons/Favorite'
-import LocationOnIcon from '@material-ui/icons/LocationOn'
+import AddToPhotos from '@material-ui/icons/AddToPhotos'
+import ThumbUpAlt from '@material-ui/icons/ThumbUpAlt'
 import style from './index.module.styl'
 import Main from "../main"
 import Sub from "../sub"
@@ -22,13 +22,9 @@ class Layout extends React.Component {
   }
 
   handleChange = (event, value) => {
+    const links = [ '/', '/index/saga', 'index/history' ]
     this.setState({ value })
-    if (value === 0) {
-      this.props.history.replace('/')
-    }
-    if (value === 1) {
-      this.props.history.push('/index/saga')
-    }
+    this.props.history.push(links[value])
   }
 
   render() {
@@ -49,9 +45,9 @@ class Layout extends React.Component {
           showLabels
           className=''
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+          <BottomNavigationAction label="recent" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="plan" icon={<AddToPhotos />} />
+          <BottomNavigationAction label="achieve" icon={<ThumbUpAlt />} />
         </BottomNavigation>
       </div>
     )
