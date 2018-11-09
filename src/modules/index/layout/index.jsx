@@ -7,8 +7,9 @@ import RestoreIcon from '@material-ui/icons/Restore'
 import AddToPhotos from '@material-ui/icons/AddToPhotos'
 import ThumbUpAlt from '@material-ui/icons/ThumbUpAlt'
 import style from './index.module.styl'
-import Main from "../main"
-import Sub from "../sub"
+import Recent from "../recent"
+import Plan from "../plan"
+import Achieve from "../achieve"
 
 const styles = {
   root: {
@@ -22,7 +23,7 @@ class Layout extends React.Component {
   }
 
   handleChange = (event, value) => {
-    const links = [ '/', '/index/saga', 'index/history' ]
+    const links = [ '/', '/index/plan', '/index/achieve' ]
     this.setState({ value })
     this.props.history.push(links[value])
   }
@@ -35,8 +36,9 @@ class Layout extends React.Component {
       <div className={style.wrapper}>
         <article className={style.content}>
           <Switch>
-            <Route path={`${match.path}`} exact component={Main} />
-            <Route path={`${match.path}/saga`} component={Sub} />
+            <Route path={`${match.path}`} exact component={Recent} />
+            <Route path={`${match.path}/plan`} component={Plan} />
+            <Route path={`${match.path}/achieve`} component={Achieve} />
           </Switch>
         </article>
         <BottomNavigation
